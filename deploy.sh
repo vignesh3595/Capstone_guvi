@@ -4,7 +4,7 @@ docker login -u vigneshvkr -p $docker_pass
 if [[$GIT_BRANCH == "origin/dev"]]; then
 docker tag capstone vigneshvkr/dev:v1
 docker push vigneshvkr/dev:v1
-elif [[$GIT_BRANCH == "main"]]; then
+elif [[$GIT_BRANCH == "origin/main"]]; then
 docker tag capstone vigneshvkr/prod:v2
 docker push vigneshvkr/prod:v2
 else
