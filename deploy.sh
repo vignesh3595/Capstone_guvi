@@ -1,5 +1,5 @@
 #!/bin/bash
-# docker run -itd -p 80:80 capstone
+docker run -itd -p 80:80 capstone
 docker login -u vigneshvkr -p $docker_pass
 if [[$GIT_BRANCH == "origin/dev"]]; then
 docker tag capstone vigneshvkr/dev:v1
