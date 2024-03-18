@@ -1,14 +1,14 @@
 #!/bin/bash
 docker run -itd -p 80:80 capstone
-docker login -u vigneshvkr -p Vignesh@95
-if["$GITHUB_REF" == "refs/heads/dev"];
+docker login -u vigneshvkr -p $docker_pass
+if["$GIT_BRANCH" == "dev"];
 then
-docker build -t vigneshvkr/capstone:v1 .
-docker push vigneshvkr/dev-capstone:v1
-elif["$GITHUB_REF" == "refs/heads/main"];
+docker tag capstone vigneshvkr/dev:v1 .
+docker push vigneshvkr/dev:v1
+elif["$GIT_BRANCH" == "main"];
 then
-docker build -t vigneshvkr/capstone:v2 .
-docker push vigneshvkr/prod-capstone:v2
+docker tag capstone vigneshvkr/prod:v2 .
+docker push vigneshvkr/prod:v2
 else
 echo "No action. Branch is not dev or main."
 fi
